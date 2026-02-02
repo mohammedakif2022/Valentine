@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: #fff;
+    }
+
+    .no {
+      background: #ffffff;
+      color: #ff4d6d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="question">Will you be my Valentine? ❤️</h1>
+    <p id="subtitle">I have a few little questions for you…</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="nextQuestion(true)">Yes 💖</button>
+      <button class="no" onclick="nextQuestion(false)">No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      "Will you be my Valentine? ❤️",
+      "Will you go on many more adventures with me? ✨",
+      "Will you keep laughing with me, even on the hard days? 😊",
+      "Can I be your Valentine today and always? 💕"
+    ];
+
+    let index = 0;
+
+    function nextQuestion(answer) {
+      if (!answer) {
+        document.getElementById('subtitle').innerText = "That's okay… but I’ll still keep loving you 💗";
+        return;
+      }
+
+      index++;
+      if (index < questions.length) {
+        document.getElementById('question').innerText = questions[index];
+        document.getElementById('subtitle').innerText = "Click yes if your heart agrees 💓";
+      } else {
+        document.getElementById('question').innerText = "You just made me the happiest person alive 💘";
+        document.getElementById('subtitle').innerText = "Happy Valentine’s Day, my love.";
+        document.querySelector('.buttons').classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
